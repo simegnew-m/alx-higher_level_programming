@@ -4,21 +4,19 @@
  * check_cycle - check a singly linked list has a cycle in it
  *
  * @list: linked list
- * Return: 0 or 1
+ * Return: 0 if there is no cycle, 1 if there is a cycle
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *nextn = list, *nextn_nextn = list;
-
-	while (nextn && nextn_nextn  && nextn_nextn->next)
+	listint_t *new = list, *new_new = list;
+	while (new && new_new  && new_new->next)
 	{
-		nextn = nextn->next;
-		nextn_nextn  = nextn_nextn->next->next;
-		if (nextn == nextn_nextn)
+		new = new->next;
+		new_new  = new_new->next->next;
+		if (new == new_new)
 		{
 			return (1);
 		}
 	}
 	return (0);
 }
-â—
