@@ -8,12 +8,12 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *new = list, *new_new = list;
-	while (new && new_new  && new_new->next)
+	listint_t *current = list, *current_current = list;
+	while (current && current_current  && current_current->next)
 	{
-		new = new->next;
-		new_new  = new_new->next->next;
-		if (new == new_new)
+		current = current->next;
+		current_current  = current_current->next->next;
+		if (current == current_current)
 		{
 			return (1);
 		}
