@@ -1,4 +1,4 @@
 #!/usr/bin/python3
-for alpha in range(ord('a'), ord('z') + 1):
-    if alpha != ord('e') and alpha != ord('q'):
-        print("{:c}".format(alpha), end=" ")
+for letter in range(97, 123):
+    if chr(letter) is not 'q' and chr(letter) is not 'e':
+        print("{}".format(chr(letter)), end="")
