@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 import random
 number = random.randint(-10000, 10000)
-# if the number is negative, divide the number by -10 to get the last digit
-# if the number is positive, divide the number by 10 to get the last digit
 if number < 0:
     r = number % -10
 else:
