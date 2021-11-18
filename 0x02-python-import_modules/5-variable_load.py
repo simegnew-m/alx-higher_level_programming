@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-from variable_load_5 import x
+from variable_load_5 import a
+
 def main():
-    print(x)
+    print(a)
 if __name__ == "__main__":
     main()
