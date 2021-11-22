@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 def element_at(my_list, idx):
+copy_my_list = my_list[]
     if idx < 0 or idx >= len(copy_my_list) :
         return copy_my_list
     else:
