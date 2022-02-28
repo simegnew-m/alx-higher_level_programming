@@ -1,10 +1,9 @@
 #!/usr/bin/node
-'use strict';
-let x = process.argv[2];
+const x = Math.floor(Number(process.argv[2]));
 if (isNaN(x)) {
-  console.log('Missing size');
+  console.log('Missing number of occurrences');
 } else {
   for (let i = 0; i < x; i++) {
-    console.log('X'.repeat(x));
+    console.log('C is fun');
   }
 }
