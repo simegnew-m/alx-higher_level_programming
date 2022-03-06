@@ -1,21 +1,24 @@
 #!/usr/bin/python3
-# Defines a City model.
-# Inherits from SQLAlchemy Base and links to the MySQL table cities.
+"""
+prints the State object with the name passed as argument from a database
+"""
 
-from sqlalchemy import Column, ForeignKey, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
+import sqlalchemy
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sys import argv
+from model_state import Base, State
 
-Base = declarative_base()
-
-
-class City(Base):
-    """Represents a city for a MySQL database.
-    Attributes:
-        id (str): The city's id.
-        name (sqlalchemy.Integer): The city's name.
-        state_id (sqlalchemy.String): The city's state id.
-    """
-    __tablename__ = "cities"
-    id = Column(Integer, primary_key=True)
-    name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey("states.id"), nullable=False)
+if __name__ == "__main__":
+    eng = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(argv[1],
+                                                                    argv[2],
+                                                                    argv[3]))
+    Base.metadata.create_all(eng)
+    Session = sessionmaker(bind=eng)
+    session = Session()
+    state = session.query(State).filter_by(name=argv[4]).first()
+    if state is not None:
+        print(str(state.id))
+    else:
+        print("Not found")
+    session.close()
